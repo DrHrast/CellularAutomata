@@ -1,16 +1,45 @@
-<div class="container">
-  <div class="tabbar">
-    <button routerLink="1d-docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      One dimensional CA
-    </button>
+<div class="docs-screen">
+  <aside class="docs-sidebar">
+    <div class="sidebar-card">
+      <h2 class="sidebar-title">Documentation</h2>
 
-    <button routerLink="2d-docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      Two dimensional CA
-    </button>
+      <nav class="tabbar" role="tablist" aria-label="Documentation sections">
+        <button
+          class="tab-btn"
+          routerLink="1d-docs"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          role="tab"
+        >
+          1D Automata
+        </button>
 
-    <button routerLink="import-docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      File import
-    </button>
-  </div>
-  <router-outlet></router-outlet>
+        <button
+          class="tab-btn"
+          routerLink="2d-docs"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          role="tab"
+        >
+          2D Automata
+        </button>
+
+        <button
+          class="tab-btn"
+          routerLink="import-docs"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          role="tab"
+        >
+          File Import
+        </button>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <section class="content-card">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
 </div>

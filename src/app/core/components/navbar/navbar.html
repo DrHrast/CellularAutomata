@@ -1,16 +1,34 @@
-<header>
-  <h1>Cellular Automata</h1>
+<header class="app-header">
+  <h1 class="app-title">Cellular Automata</h1>
+
   <div class="navigation">
-    <button routerLink="/one-d" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <button
+      class="nav-btn"
+      routerLink="/one-d"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       One dimensional CA
     </button>
 
-    <button routerLink="/two-d" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <button
+      class="nav-btn"
+      routerLink="/two-d"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       Two dimensional CA
     </button>
 
-    <button routerLink="/docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <button
+      class="nav-btn"
+      routerLink="/docs"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       Documentation
     </button>
+
+    <!-- future buttons just go here -->
   </div>
 </header>

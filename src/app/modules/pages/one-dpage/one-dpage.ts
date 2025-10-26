@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-one-dpage',
-  imports: [OneDForm, CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './one-dpage.html',
   styleUrl: './one-dpage.css',
   standalone: true
@@ -35,7 +35,7 @@ export class OneDPage {
     // this.rows = [...this.rows, [...this.cellRow]];
   }
 
-  Initialize() {
+  initialize() {
     this.initialRow = Array.from({ length: this.gridNOfColumns }, () => 0);
     this.initialRow[Math.round(this.gridNOfColumns/2)] = 1;
   }
@@ -53,7 +53,7 @@ export class OneDPage {
   }
 
   resetGrid() {
-    this.Initialize();
+    this.initialize();
     let tempInitalRow = this.initialRow;
     this.cellRow = [...tempInitalRow];
     this.rows = [[...tempInitalRow]];
@@ -73,6 +73,7 @@ export class OneDPage {
 
   expandeNeighborhood($event: any) {
     this.useExpandedNeighborhood = !this.useExpandedNeighborhood;
+    this.resetGrid();
   }
 
   onRuleChange(value: string) {
@@ -90,7 +91,7 @@ export class OneDPage {
 
   onSpecsChange($event: any) {
     this.resetGrid();
-    this.Initialize();
+    this.initialize();
   }
 
   randomizeSeed() {

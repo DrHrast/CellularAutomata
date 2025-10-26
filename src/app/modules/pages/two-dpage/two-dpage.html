@@ -1,17 +1,70 @@
-<div class="container">
-  <div class="toolbar">
-    <button mat-button (click)="onClick()">Procede</button>
-    <button mat-button (click)="Play()">Play</button>
-    <button mat-button (click)="Stop()">Stop</button>
-  </div>
-  <div class="grid">
-    <div class="grid-row" *ngFor="let row of grid; let i = index; trackBy: trackIndex">
-      <div
-        class="cell"
-        *ngFor="let cell of row; let j = index; trackBy: trackIndex"
-        [class.alive]="cell === 1"
-        (pointerdown)="startDraw(i, j, $event)"
-      (pointerenter)="draw(i, j, $event)"></div>
+<div class="sim-screen">
+  <!-- left control panel -->
+  <aside class="sim-sidebar">
+    <div class="sim-sidebar-card">
+      <h2 class="sidebar-title">2D Automata</h2>
+
+       <div class="field-two">
+          <div class="field-block">
+            <label class="field-label" for="cells">Number of columns</label>
+            <input
+              class="text-input"
+              id="cells"
+              name="cells"
+              type="number"
+              min="8"
+              max="100"
+              placeholder="51"
+              [(ngModel)]="gridNumberColumns"
+              (ngModelChange)="onSpecsChange($event)"
+            />
+          </div>
+          <div class="field-block">
+            <label class="field-label" for="cells">Number of rows</label>
+            <input
+              class="text-input"
+              id="cells"
+              name="cells"
+              type="number"
+              min="8"
+              max="100"
+              placeholder="51"
+              [(ngModel)]="gridNumberRows"
+              (ngModelChange)="onSpecsChange($event)"
+            />
+          </div>
+       </div>
+
+      <div class="control-group">
+        <button type="button" class="btn ghost" (click)="onClick()">Step</button>
+        <button type="button" class="btn ghost" (click)="randomizeSeed()">Randomize Seed</button>
+        <button type="button" class="btn primary" (click)="play()">▶</button>
+        <button type="button" class="btn warning" (click)="stop()">❚❚</button>
+        <button type="button" class="btn danger" (click)="resetGrid()">Reset</button>
+      </div>
+
+      <div class="hint-block">
+        <p class="hint-line"><strong>Draw:</strong> click + drag</p>
+        <p class="hint-line"><strong>Alive cell:</strong> light</p>
+      </div>
     </div>
-  </div>
+  </aside>
+
+  <!-- main simulation surface -->
+  <section class="sim-surface">
+    <div class="grid">
+      <div
+        class="grid-row"
+        *ngFor="let row of grid; let i = index; trackBy: trackIndex"
+      >
+        <div
+          class="cell"
+          *ngFor="let cell of row; let j = index; trackBy: trackIndex"
+          [class.alive]="cell === 1"
+          (pointerdown)="startDraw(i, j, $event)"
+          (pointerenter)="draw(i, j, $event)"
+        ></div>
+      </div>
+    </div>
+  </section>
 </div>
