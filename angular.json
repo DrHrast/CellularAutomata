@@ -5,7 +5,9 @@
   "projects": {
     "cellular-automata-app": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {}
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -88,5 +90,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "76c5b892-cb57-4396-b188-eccb8d3c54bd"
   }
 }

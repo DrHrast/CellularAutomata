@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="form-container">
+    <div class="ca-form-card">
+      <form (ngSubmit)="onRun()" #caForm="ngForm">
+        <h2>1D Cellular Automata</h2>
+
+        <div class="neighborhood-check">
+          <input
+              type="checkbox"
+              (click)="expandeNeighborhood($event)"/>
+          <label for="neighborhood"> Expanded neighborhood</label>
+        </div>
+
+        <div *ngIf="!useExpandedNeighborhood">
+          <div class="field">
+            <label for="rule">Rule (0–255): </label>
+            <input
+              id="rule"
+              name="rule"
+              type="text"
+              [(ngModel)]="ruleDecimal"
+              (ngModelChange)="onRuleChange($event)"
+              inputmode="numeric"
+              placeholder="30"
+              autocomplete="off"
+              aria-describedby="ruleHelp"
+            />
+          </div>
+
+          <div class="field-two">
+            <div>
+              <label for="cells">Cells: </label>
+              <input id="cells" name="cells" type="number" min="8" max="4096" placeholder="99" [(ngModel)]="gridNOfColumns" (ngModelChange)="onSpecsChange($event)">
+            </div>
+            <div>
+              <label for="generations">Generations: </label>
+              <input id="generations" name="generations" type="number" min="1" max="4096" placeholder="100" [(ngModel)]="generations" (ngModelChange)="onSpecsChange($event)">
+            </div>
+            <div>
+              <label for="steps">Rows per step: </label>
+              <input id="steps" name="steps" type="number" min="1" max="20" placeholder="5" [(ngModel)]="stepCount">
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="useExpandedNeighborhood">
+          <div class="field">
+            <label for="rule">Rule (255 <): </label>
+            <input
+              id="rule"
+              name="rule"
+              type="text"
+              [(ngModel)]="rule32bitDecimal"
+              (ngModelChange)="onRuleChange($event)"
+              inputmode="numeric"
+              placeholder="300"
+              autocomplete="off"
+              aria-describedby="ruleHelp"
+            />
+          </div>
+        </div>
+
+        <!-- <div class="field">
+          <label for="boundary">Boundary</label>
+          <select id="boundary" name="boundary" [(ngModel)]="model.boundary">
+            <option value="periodic">Periodic (wrap)</option>
+            <option value="fixed0">Fixed 0</option>
+            <option value="fixed1">Fixed 1</option>
+          </select>
+        </div> -->
+
+        <!-- <div class="field">
+          <label for="init">Initial Condition</label>
+          <select id="init" name="init" [(ngModel)]="model.init">
+            <option value="center">Single 1 in center</option>
+            <option value="random">Random</option>
+            <option value="custom">Custom bitstring</option>
+          </select>
+        </div> -->
+
+        <!-- <div class="field" *ngIf="model.init === 'custom'">
+          <label for="custom">Custom bitstring (e.g. 000010000)</label>
+          <input id="custom" name="custom" type="text" pattern="[01]+" [(ngModel)]="model.custom">
+        </div> -->
+
+        <!-- <div class="field two">
+          <div>
+            <label for="cellSize">Cell size (px)</label>
+            <input id="cellSize" name="cellSize" type="number" min="1" max="32" [(ngModel)]="model.cellSize">
+          </div>
+          <div>
+            <label for="speed">Speed (ms/step)</label>
+            <input id="speed" name="speed" type="number" min="0" max="2000" [(ngModel)]="model.speed">
+          </div>
+        </div> -->
+
+        <div class="actions">
+          <button class="primary" (click)="onClick()">Step</button>
+          <button (click)="randomizeSeed()">Randomize Seed</button>
+        </div>
+        <div class="main-actions">
+          <button class="primary" (click)="play()">|></button>
+          <button class="primary" (click)="stop()">||</button>
+          <button class="primary" (click)="resetGrid()">Reset</button>
+        </div>
+
+        <small id="ruleHelp" *ngIf="ruleDecimal && !isRuleValid" style="color:#c0392b;">
+          Must be between 0 & 255.
+        </small>
+      </form>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="grid-row" *ngFor="let row of rows">
+      <div class="cell" *ngFor="let cell of row" [class.alive]="cell === 1"></div>
+    </div>
+  </div>
+</div>

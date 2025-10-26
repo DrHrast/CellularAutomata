@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="tabbar">
+    <button routerLink="1d-docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      One dimensional CA
+    </button>
+
+    <button routerLink="2d-docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Two dimensional CA
+    </button>
+
+    <button routerLink="import-docs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      File import
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

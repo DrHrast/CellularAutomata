@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+}
+
+.tabbar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tabbar > button {
+  padding: 10px 18px;
+  font-size: large;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: radial-gradient(at bottom left, #09133a, #6d2e8c, #3f3f3f);
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tabbar > button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.tabbar > button.active {
+  background: radial-gradient(at bottom left, #152764, #9b59b6, #f1f1f1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}

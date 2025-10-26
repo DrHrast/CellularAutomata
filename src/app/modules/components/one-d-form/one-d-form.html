@@ -1,0 +1,99 @@
+<div class="form-container">
+  <section class="ca-form-card">
+    <form (ngSubmit)="onRun()" #caForm="ngForm">
+      <h2>1D Cellular Automata</h2>
+
+      <div class="field">
+        <label for="rule">Rule (0–255)</label>
+        <input id="rule" name="rule" type="number" min="0" max="255" required [(ngModel)]="model.rule">
+      </div>
+
+      <div class="field two">
+        <div>
+          <label for="cells">Cells</label>
+          <input id="cells" name="cells" type="number" min="8" max="4096" required [(ngModel)]="model.cells">
+        </div>
+        <div>
+          <label for="steps">Generations</label>
+          <input id="steps" name="steps" type="number" min="1" max="4096" required [(ngModel)]="model.steps">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="boundary">Boundary</label>
+        <select id="boundary" name="boundary" [(ngModel)]="model.boundary">
+          <option value="periodic">Periodic (wrap)</option>
+          <option value="fixed0">Fixed 0</option>
+          <option value="fixed1">Fixed 1</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="init">Initial Condition</label>
+        <select id="init" name="init" [(ngModel)]="model.init">
+          <option value="center">Single 1 in center</option>
+          <option value="random">Random</option>
+          <option value="custom">Custom bitstring</option>
+        </select>
+      </div>
+
+      <div class="field" *ngIf="model.init === 'custom'">
+        <label for="custom">Custom bitstring (e.g. 000010000)</label>
+        <input id="custom" name="custom" type="text" pattern="[01]+" [(ngModel)]="model.custom">
+      </div>
+
+      <div class="field two">
+        <div>
+          <label for="cellSize">Cell size (px)</label>
+          <input id="cellSize" name="cellSize" type="number" min="1" max="32" [(ngModel)]="model.cellSize">
+        </div>
+        <div>
+          <label for="speed">Speed (ms/step)</label>
+          <input id="speed" name="speed" type="number" min="0" max="2000" [(ngModel)]="model.speed">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="primary">Run</button>
+        <button type="button" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </section>
+  <!-- <section class="ca-form-card">
+    <form (ngSubmit)="onRun()" #caForm="ngForm">
+      <h2 id="sc-title">States & Color Scheme</h2>
+
+      <fieldset class="field">
+        <legend>Cell states in use</legend>
+
+        <div class="states-grid">
+          <label class="chk" *ngFor="let state of allStates">
+            <input
+              type="checkbox"
+              [ngModel]="model.used[state]"
+              (ngModelChange)="model.used[state] = $event"
+              name="use-{{ state }}"
+            />
+            <span class="badge" [attr.data-state]="state">{{ state }}</span>
+          </label>
+        </div>
+
+        <small class="hint" *ngIf="selectedStates.length === 0">
+          Select at least one state.
+        </small>
+      </fieldset>
+
+      <div class="field">
+        <label for="scheme">Color scheme</label>
+        <select id="scheme" name="scheme" [(ngModel)]="model.colorScheme">
+          <option *ngFor="let s of schemes" [value]="s">
+            {{ s | titlecase }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </section> -->
+  <section class="ca-form-card">
+    <h2 id="sc-title">Import preset</h2>
+  </section>
+</div>

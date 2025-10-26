@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="toolbar">
+    <button mat-button (click)="onClick()">Procede</button>
+    <button mat-button (click)="Play()">Play</button>
+    <button mat-button (click)="Stop()">Stop</button>
+  </div>
+  <div class="grid">
+    <div class="grid-row" *ngFor="let row of grid; let i = index; trackBy: trackIndex">
+      <div
+        class="cell"
+        *ngFor="let cell of row; let j = index; trackBy: trackIndex"
+        [class.alive]="cell === 1"
+        (pointerdown)="startDraw(i, j, $event)"
+      (pointerenter)="draw(i, j, $event)"></div>
+    </div>
+  </div>
+</div>
