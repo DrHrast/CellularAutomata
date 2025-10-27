@@ -5,11 +5,13 @@ import { TwoDPage } from './modules/pages/two-dpage/two-dpage';
 import { OneDimesionalDocs } from './modules/components/one-dimesional-docs/one-dimesional-docs';
 import { TwoDimesionalDocs } from './modules/components/two-dimesional-docs/two-dimesional-docs';
 import { ImportFileDocs } from './modules/components/import-file-docs/import-file-docs';
+import { SortingAlgorithms } from './modules/pages/sorting-algorithms/sorting-algorithms';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'one-d' },
   { path: 'one-d', component: OneDPage },
   { path: 'two-d', component: TwoDPage },
+  { path: 'sorting-algforithms', component: SortingAlgorithms },
   { path: 'docs', component: DocsPage,
     children: [
       { path: '1d-docs', component: OneDimesionalDocs },

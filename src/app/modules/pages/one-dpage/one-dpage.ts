@@ -21,7 +21,7 @@ export class OneDPage {
   ruleDecimal = '30';
   rule32bitDecimal = '300';
   ruleBinary = '00011110';
-  rule32bitBinary = '';
+  rule32bitBinary = '000100101100';
   isPlaying: boolean = false;
   stepMs = 100;
   private timer: number | null = null;
@@ -41,6 +41,7 @@ export class OneDPage {
   }
 
   onClick() {
+    console.log(this.rule32bitBinary);
     for(let i = 0; i < this.stepCount; i++) {
       let nextRow = this.oneDService.calculateNext(
         this.cellRow,
@@ -74,15 +75,16 @@ export class OneDPage {
   expandeNeighborhood($event: any) {
     this.useExpandedNeighborhood = !this.useExpandedNeighborhood;
     this.resetGrid();
+    this.onRuleChange(this.useExpandedNeighborhood ? this.rule32bitDecimal : this.ruleDecimal);
   }
 
   onRuleChange(value: string) {
     const digits = value.replace(/\D/g, '');
     if(this.useExpandedNeighborhood) {
-      const n = Math.min(0xFFFFFFFF, Math.max(0, parseInt(value.replace(/\D/g, ''), 10) || 0));
+      const n = Math.min(0xFFFFFFFF, Math.max(0, parseInt(digits, 10) || 0));
       this.rule32bitBinary = n.toString(2).padStart(32, '0');
     } else {
-      let n = Math.min(255, Math.max(0, parseInt(value.replace(/\D/g, ''), 10) || 0));
+      let n = Math.min(255, Math.max(0, parseInt(digits, 10) || 0));
       this.ruleBinary = n.toString(2).padStart(8, '0');
     }
     this.resetGrid();

@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="form-container">
-    <div class="ca-form-card">
+<div class="sim-screen">
+  <div class="sim-sidebar">
+    <div class="sim-sidebar-card">
       <form (ngSubmit)="onRun()" #caForm="ngForm" class="form-shell">
         <h2 class="panel-title">1D Cellular Automata</h2>
 
@@ -23,6 +23,7 @@
             <label class="field-label" for="rule">Rule (0–255)</label>
             <input
               class="text-input"
+              style="width: -webkit-fill-available;"
               id="rule"
               name="rule"
               type="text"
@@ -39,6 +40,7 @@
             <label class="field-label" for="rule32">Rule (0–4,294,967,295)</label>
             <input
               class="text-input"
+              style="width: -webkit-fill-available;"
               id="rule32"
               name="rule32"
               type="text"
@@ -98,16 +100,15 @@
           </div>
         </div>
 
-        <div class="actions">
-          <button type="button" class="btn ghost" (click)="onClick()">Step</button>
-          <button type="button" class="btn ghost" (click)="randomizeSeed()">Randomize Seed</button>
-        </div>
+        <div class="ui-separator"></div>
 
-        <div class="main-actions">
-          <button type="button" class="btn primary" (click)="play()">▶</button>
-          <button type="button" class="btn warning" (click)="stop()">❚❚</button>
-          <button type="button" class="btn danger" (click)="resetGrid()">Reset</button>
-        </div>
+        <div class="control-group">
+        <button type="button" class="btn ghost" (click)="onClick()">Step</button>
+        <button type="button" class="btn ghost" (click)="randomizeSeed()">Randomize Seed</button>
+        <button type="button" class="btn primary" (click)="play()">▶</button>
+        <button type="button" class="btn warning" (click)="stop()">❚❚</button>
+        <button type="button" class="btn danger" (click)="resetGrid()">Reset</button>
+      </div>
 
         <small id="ruleHelp" *ngIf="ruleDecimal && !isRuleValid" class="error-text">
           Must be between 0 and 255.
@@ -115,9 +116,11 @@
       </form>
     </div>
   </div>
-  <div class="grid">
-    <div class="grid-row" *ngFor="let row of rows">
-      <div class="cell" *ngFor="let cell of row" [class.alive]="cell === 1"></div>
+  <section class="sim-surface">
+    <div class="grid">
+      <div class="grid-row" *ngFor="let row of rows">
+        <div class="cell" *ngFor="let cell of row" [class.alive]="cell === 1"></div>
+      </div>
     </div>
-  </div>
+  </section>
 </div>

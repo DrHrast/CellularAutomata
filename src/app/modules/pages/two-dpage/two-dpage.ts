@@ -11,8 +11,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true
 })
 export class TwoDPage {
-  gridNumberColumns: number = 80; //Used with form and animation display
-  gridNumberRows: number = 80;
+  gridNumberColumns: number = 40; //Used with form and animation display
+  gridNumberRows: number = 40;
   grid: number[][] = [];
   initialGrid: number[][] = [];
   isPlaying: boolean = false;

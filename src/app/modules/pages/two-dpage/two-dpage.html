@@ -4,36 +4,38 @@
     <div class="sim-sidebar-card">
       <h2 class="sidebar-title">2D Automata</h2>
 
-       <div class="field-two">
-          <div class="field-block">
-            <label class="field-label" for="cells">Number of columns</label>
-            <input
-              class="text-input"
-              id="cells"
-              name="cells"
-              type="number"
-              min="8"
-              max="100"
-              placeholder="51"
-              [(ngModel)]="gridNumberColumns"
-              (ngModelChange)="onSpecsChange($event)"
-            />
-          </div>
-          <div class="field-block">
-            <label class="field-label" for="cells">Number of rows</label>
-            <input
-              class="text-input"
-              id="cells"
-              name="cells"
-              type="number"
-              min="8"
-              max="100"
-              placeholder="51"
-              [(ngModel)]="gridNumberRows"
-              (ngModelChange)="onSpecsChange($event)"
-            />
-          </div>
-       </div>
+      <div class="field-two">
+        <div class="field-block">
+          <label class="field-label" for="cells">Number of columns</label>
+          <input
+            class="text-input"
+            id="cells"
+            name="cells"
+            type="number"
+            min="8"
+            max="100"
+            placeholder="51"
+            [(ngModel)]="gridNumberColumns"
+            (ngModelChange)="onSpecsChange($event)"
+          />
+        </div>
+        <div class="field-block">
+          <label class="field-label" for="cells">Number of rows</label>
+          <input
+            class="text-input"
+            id="cells"
+            name="cells"
+            type="number"
+            min="8"
+            max="100"
+            placeholder="51"
+            [(ngModel)]="gridNumberRows"
+            (ngModelChange)="onSpecsChange($event)"
+          />
+        </div>
+      </div>
+
+      <div class="ui-separator"></div>
 
       <div class="control-group">
         <button type="button" class="btn ghost" (click)="onClick()">Step</button>
